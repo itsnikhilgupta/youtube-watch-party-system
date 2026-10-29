@@ -48,9 +48,11 @@ interface WatchPartyContextType {
 
 const WatchPartyContext = createContext<WatchPartyContextType | null>(null);
 
-const BACKEND_URL = import.meta.env.VITE_API_URL || (
-  window.location.hostname === 'localhost' ? 'http://localhost:4000' : window.location.origin
-);
+const BACKEND_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === 'localhost'
+    ? 'http://localhost:4000'
+    : 'https://youtube-watch-party-system-y7e9.onrender.com');
 
 export const WatchPartyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
