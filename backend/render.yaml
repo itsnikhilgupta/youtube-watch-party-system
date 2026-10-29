@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: watchtogether-backend
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: DATABASE_PATH
+        value: ./data/watchtogether.db
+      - key: HOST_RECONNECT_GRACE_PERIOD_MS
+        value: 15000

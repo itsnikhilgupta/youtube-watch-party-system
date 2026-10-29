@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #09090b;
+    --bg-secondary: #111116;
+    --bg-panel: #181820;
+    --bg-panel-hover: #1f1f2a;
+    --bg-input: #121218;
+
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-medium: rgba(255, 255, 255, 0.12);
+    --border-highlight: rgba(255, 38, 56, 0.4);
+
+    --accent-red: #ff2638;
+    --accent-red-hover: #ff3d4e;
+    --accent-red-glow: rgba(255, 38, 56, 0.3);
+    --accent-violet: #8b5cf6;
+    --accent-cyan: #06b6d4;
+
+    --text-primary: #f4f4f6;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  /* Focus visible accessibility outline */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #09090b, 0 0 0 4px #ff2638;
+  }
+}
+
+/* Glassmorphism & Lighting utility classes */
+.glass-panel {
+  background: rgba(24, 24, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-subtle {
+  background: rgba(17, 17, 22, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-red {
+  box-shadow: 0 0 35px -8px rgba(255, 38, 56, 0.35);
+}
+
+.glow-ambient {
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7);
+}
+
+.glow-red-subtle {
+  box-shadow: 0 0 20px -5px rgba(255, 38, 56, 0.25);
+}
+
+.glow-violet-subtle {
+  box-shadow: 0 0 25px -8px rgba(139, 92, 246, 0.25);
+}
+
+/* Radial ambient light spots */
+.ambient-glow-red {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 38, 56, 0.15) 0%, transparent 70%);
+}
+
+.ambient-hero-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 38, 56, 0.18) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 100%);
+}
+
+.grid-backdrop {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Cinematic YouTube Ambient Light Effect */
+.ambient-lighting-layer {
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0) scale(1.18);
+  width: 105%;
+  max-width: 1500px;
+  height: 580px;
+  filter: blur(85px) saturate(170%);
+  opacity: 0.38;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+/* Motion sensitivity accessibility compliance */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-lighting-layer {
+    transition: none;
+    transform: translate3d(-50%, 0, 0) scale(1.05);
+    filter: blur(45px) saturate(120%);
+    opacity: 0.25;
+  }
+}
+
